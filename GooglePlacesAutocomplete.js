@@ -537,6 +537,7 @@ export default class GooglePlacesAutocomplete extends Component {
       request.send();
     } else {
       this._results = [];
+      this.props.onResult(this._results);
       this.setState({
         dataSource: this.buildRowsFromResults([]),
       });
@@ -572,6 +573,7 @@ export default class GooglePlacesAutocomplete extends Component {
                   : responseJSON.predictions;
 
               this._results = results;
+              this.props.onResult(this._results);
               this.setState({
                 dataSource: this.buildRowsFromResults(results),
               });
@@ -606,6 +608,7 @@ export default class GooglePlacesAutocomplete extends Component {
       request.send();
     } else {
       this._results = [];
+      this.props.onResult(this._results);
       this.setState({
         dataSource: this.buildRowsFromResults([]),
       });
@@ -942,6 +945,7 @@ GooglePlacesAutocomplete.propTypes = {
   onFail: PropTypes.func,
   onNotFound: PropTypes.func,
   onPress: PropTypes.func,
+  onResult: PropTypes.func,
   onSubmitEditing: PropTypes.func,
   onTimeout: PropTypes.func,
   placeholder: PropTypes.string,
@@ -995,6 +999,7 @@ GooglePlacesAutocomplete.defaultProps = {
   onNotFound: () => {},
   onSubmitEditing: () => {},
   onPress: () => {},
+  onResult: () => {},
   onTimeout: () => console.warn('google places autocomplete: request timeout'),
   placeholder: 'Search',
   placeholderTextColor: '#A8A8A8',

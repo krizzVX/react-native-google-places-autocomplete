@@ -333,6 +333,7 @@ interface GooglePlacesAutocompleteProps extends TextInputProps {
   fetchDetails?: boolean;
   renderDescription?: (description: DescriptionRow) => string;
   onPress?: (data: GooglePlaceData, detail: GooglePlaceDetail | null) => void;
+  onResult?: (data: GooglePlaceData[]) => void;
   getDefaultValue?: () => string;
   styles?: Partial<Styles>;
   suppressDefaultStyles?: boolean;
