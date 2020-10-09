@@ -2,20 +2,19 @@ import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 import Qs from 'qs';
 import React, { Component } from 'react';
+import {  TouchableHighlight, ScrollView, FlatList
+ }from "react-native-gesture-handler"
 import {
   ActivityIndicator,
   Dimensions,
-  FlatList,
   Image,
   Keyboard,
   PixelRatio,
   Platform,
-  ScrollView,
+  View,
   StyleSheet,
   Text,
   TextInput,
-  TouchableHighlight,
-  View,
 } from 'react-native';
 
 const WINDOW = Dimensions.get('window');
@@ -41,7 +40,6 @@ const defaultStyles = {
     paddingBottom: 4.5,
     paddingLeft: 10,
     paddingRight: 10,
-    marginTop: 7.5,
     marginLeft: 8,
     marginRight: 8,
     fontSize: 15,
@@ -696,8 +694,8 @@ export default class GooglePlacesAutocomplete extends Component {
   _renderRow = (rowData = {}, sectionID, rowID) => {
     return (
       <ScrollView
-        style={{ flex: 1 }}
-        scrollEnabled={this.props.isRowScrollable}
+        style={{ flex: 1, flexGrow: 1 }}
+        scrollEnabled={true}
         keyboardShouldPersistTaps={this.props.keyboardShouldPersistTaps}
         horizontal={true}
         showsHorizontalScrollIndicator={false}
@@ -828,7 +826,6 @@ export default class GooglePlacesAutocomplete extends Component {
           data={this.state.dataSource}
           keyExtractor={keyGenerator}
           extraData={[this.state.dataSource, this.props]}
-          ItemSeparatorComponent={this._renderSeparator}
           renderItem={({ item }) => this._renderRow(item)}
           ListEmptyComponent={
             this.state.text.length > this.props.minLength &&
@@ -873,6 +870,7 @@ export default class GooglePlacesAutocomplete extends Component {
             ]}
           >
             {this._renderLeftButton()}
+            <View style={{flex: 1}}>
             <TextInputComp
               ref='textInput'
               editable={this.props.editable}
@@ -910,10 +908,12 @@ export default class GooglePlacesAutocomplete extends Component {
               {...userProps}
               onChangeText={this._handleChangeText}
             />
+                    {this._getFlatList()}
+
+            </View>
             {this._renderRightButton()}
           </View>
         )}
-        {this._getFlatList()}
         {this.props.children}
       </View>
     );
