@@ -2,8 +2,11 @@ import debounce from 'lodash.debounce';
 import PropTypes from 'prop-types';
 import Qs from 'qs';
 import React, { Component } from 'react';
-import {  TouchableHighlight, ScrollView, FlatList
- }from "react-native-gesture-handler"
+import {
+  TouchableHighlight,
+  ScrollView,
+  FlatList,
+} from 'react-native-gesture-handler';
 import {
   ActivityIndicator,
   Dimensions,
@@ -245,7 +248,9 @@ export default class GooglePlacesAutocomplete extends Component {
         timeout: 20000,
       };
     }
-    const getCurrentPosition = navigator.geolocation.getCurrentPosition || navigator.geolocation.default.getCurrentPosition;
+    const getCurrentPosition =
+      navigator.geolocation.getCurrentPosition ||
+      navigator.geolocation.default.getCurrentPosition;
     getCurrentPosition(
       (position) => {
         if (this.props.nearbyPlacesAPI === 'None') {
@@ -870,46 +875,47 @@ export default class GooglePlacesAutocomplete extends Component {
             ]}
           >
             {this._renderLeftButton()}
-            <View style={{flex: 1}}>
-            <TextInputComp
-              ref='textInput'
-              editable={this.props.editable}
-              returnKeyType={this.props.returnKeyType}
-              keyboardAppearance={this.props.keyboardAppearance}
-              autoFocus={this.props.autoFocus}
-              style={[
-                this.props.suppressDefaultStyles ? {} : defaultStyles.textInput,
-                this.props.styles.textInput,
-              ]}
-              value={this.state.text}
-              placeholder={this.props.placeholder}
-              onSubmitEditing={this.props.onSubmitEditing}
-              placeholderTextColor={this.props.placeholderTextColor}
-              onFocus={
-                onFocus
-                  ? () => {
-                      this._onFocus();
-                      onFocus();
-                    }
-                  : this._onFocus
-              }
-              onBlur={
-                onBlur
-                  ? () => {
-                      this._onBlur();
-                      onBlur();
-                    }
-                  : this._onBlur
-              }
-              underlineColorAndroid={this.props.underlineColorAndroid}
-              clearButtonMode={
-                clearButtonMode ? clearButtonMode : 'while-editing'
-              }
-              {...userProps}
-              onChangeText={this._handleChangeText}
-            />
-                    {this._getFlatList()}
-
+            <View style={{ flex: 1 }}>
+              <TextInputComp
+                ref='textInput'
+                editable={this.props.editable}
+                returnKeyType={this.props.returnKeyType}
+                keyboardAppearance={this.props.keyboardAppearance}
+                autoFocus={this.props.autoFocus}
+                style={[
+                  this.props.suppressDefaultStyles
+                    ? {}
+                    : defaultStyles.textInput,
+                  this.props.styles.textInput,
+                ]}
+                value={this.state.text}
+                placeholder={this.props.placeholder}
+                onSubmitEditing={this.props.onSubmitEditing}
+                placeholderTextColor={this.props.placeholderTextColor}
+                onFocus={
+                  onFocus
+                    ? () => {
+                        this._onFocus();
+                        onFocus();
+                      }
+                    : this._onFocus
+                }
+                onBlur={
+                  onBlur
+                    ? () => {
+                        this._onBlur();
+                        onBlur();
+                      }
+                    : this._onBlur
+                }
+                underlineColorAndroid={this.props.underlineColorAndroid}
+                clearButtonMode={
+                  clearButtonMode ? clearButtonMode : 'while-editing'
+                }
+                {...userProps}
+                onChangeText={this._handleChangeText}
+              />
+              {this._getFlatList()}
             </View>
             {this._renderRightButton()}
           </View>
