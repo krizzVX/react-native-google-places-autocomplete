@@ -854,6 +854,7 @@ export default class GooglePlacesAutocomplete extends Component {
       onBlur,
       clearButtonMode,
       InputComp,
+      InputLeftIcon,
       ...userProps
     } = this.props.textInputProps;
     const TextInputComp = InputComp ? InputComp : TextInput;
@@ -914,7 +915,20 @@ export default class GooglePlacesAutocomplete extends Component {
                 }
                 {...userProps}
                 onChangeText={this._handleChangeText}
-              />
+              ></TextInputComp>
+              <View
+                style={{
+                  position: 'absolute',
+                  backgroundColor: 'transparent',
+                  top: 17,
+                  left: 22,
+                  height: 48,
+                  width: 48,
+                  zIndex: 4,
+                }}
+              >
+                <InputLeftIcon></InputLeftIcon>
+              </View>
               {this._getFlatList()}
             </View>
             {this._renderRightButton()}
