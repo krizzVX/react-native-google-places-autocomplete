@@ -818,8 +818,7 @@ export default class GooglePlacesAutocomplete extends Component {
       this.supportedPlatform() &&
       (this.state.text !== '' ||
         this.props.predefinedPlaces.length ||
-        this.props.currentLocation === true) &&
-      this.state.listViewDisplayed === true
+        this.props.currentLocation === true)
     ) {
       return (
         <FlatList
