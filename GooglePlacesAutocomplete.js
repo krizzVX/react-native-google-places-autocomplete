@@ -6,6 +6,7 @@ import {
   TouchableHighlight,
   ScrollView,
   FlatList,
+  TouchableOpacity,
 } from 'react-native-gesture-handler';
 import {
   ActivityIndicator,
@@ -915,6 +916,15 @@ export default class GooglePlacesAutocomplete extends Component {
                 {...userProps}
                 onChangeText={this._handleChangeText}
               ></TextInputComp>
+              {this.props.clearButton && !!this.state.text && <View style={{
+                 position: 'absolute',
+                 backgroundColor: 'transparent',
+                 top: 9,
+                 right: 20 ,
+                 height: 10,
+                 width: 10,
+                 zIndex: 4,
+              }}><TouchableOpacity onPress={()=> {this.clearText.call(this); this.props.onPress(); this.props.onResult([])}}><Text style={{fontSize: 20}}>x</Text></TouchableOpacity></View>}
               <View
                 style={{
                   position: 'absolute',
