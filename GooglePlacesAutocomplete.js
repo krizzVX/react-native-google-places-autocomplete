@@ -920,9 +920,9 @@ export default class GooglePlacesAutocomplete extends Component {
                  position: 'absolute',
                  backgroundColor: 'transparent',
                  top: 9,
-                 right: 20 ,
-                 height: 10,
-                 width: 10,
+                 right: 10 ,
+                 height: 20,
+                 width: 20,
                  zIndex: 4,
               }}><TouchableOpacity onPress={()=> {this.clearText.call(this); this.props.onPress(); this.props.onResult([])}}><Text style={{fontSize: 20}}>x</Text></TouchableOpacity></View>}
               <View
